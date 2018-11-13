@@ -18,7 +18,7 @@ public class SupremeBotV1 {
 		System.setProperty("webdriver.chrome.driver","C:\\\\selenium-3.14.0\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		
-		File data = new File("D:\\eclipse\\workspace\\Supreme Bot\\src\\data");
+		File data = new File("data.txt");
 		ArrayList<String> dataList = new ArrayList<String>();
         
 		try{
