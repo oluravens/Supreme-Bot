@@ -14,43 +14,43 @@ public class SupremeBotV1 {
 
 
     public static void main(String[] args) {
-        // declaration and instantiation of objects/variables
-		System.setProperty("webdriver.chrome.driver","C:\\\\selenium-3.14.0\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		
-		File data = new File("data.txt");
-		ArrayList<String> dataList = new ArrayList<String>();
-        
-		try{
-			Scanner dataScanner = new Scanner(data);
-			
-			while(dataScanner.hasNextLine()) {
-				dataList.add(dataScanner.nextLine());
-			}
-			
-			dataScanner.close();
+// declaration and instantiation of objects/variables
+	System.setProperty("webdriver.chrome.driver","C:\\\\selenium-3.14.0\\chromedriver.exe");
+	WebDriver driver = new ChromeDriver();
+
+	File data = new File("data.txt");
+	ArrayList<String> dataList = new ArrayList<String>();
+
+	try{
+		Scanner dataScanner = new Scanner(data);
+
+		while(dataScanner.hasNextLine()) {
+			dataList.add(dataScanner.nextLine());
 		}
-		catch (FileNotFoundException e) {
-	        e.printStackTrace();
-	    }
-		        
-		//fields needed for finding objects
-		String category = dataList.get(0);
-		String keyword = dataList.get(1);
+
+		dataScanner.close();
+	}
+	catch (FileNotFoundException e) {
+		e.printStackTrace();
+    	}
+
+	//fields needed for finding objects
+	String category = dataList.get(2);
+	String keyword = dataList.get(3);
 		
         //form fields
-        String name = dataList.get(2);
-        String email = dataList.get(3);
-        String telNumber = dataList.get(4);
-        String address = dataList.get(5); 
-//        String aptUnit = dataList.get(6);
-        String zip = dataList.get(7);
-//        String city = dataList.get(8);
-//        String state = dataList.get(9);
-        String credit = dataList.get(10);
-        String creditMonth = dataList.get(11);
-        String creditYear = dataList.get(12);
-        String cvv = dataList.get(13);
+        String name = dataList.get(4);
+        String email = dataList.get(5);
+        String telNumber = dataList.get(6);
+        String address = dataList.get(7); 
+//        String aptUnit = dataList.get(8);
+        String zip = dataList.get(9);
+//        String city = dataList.get(10);
+//        String state = dataList.get(11);
+        String credit = dataList.get(12);
+        String creditMonth = dataList.get(13);
+        String creditYear = dataList.get(14);
+        String cvv = dataList.get(15);
         
         // launch Chrome and direct it to the Base URL
         String baseUrl = "https://www.supremenewyork.com/shop/all";
@@ -87,27 +87,17 @@ public class SupremeBotV1 {
         	driver.get(baseUrl + "/accessories");
         }
         
-        
-        //System.out.println("Enter a keyword: ");
-       // keyword = input.nextLine();
-        
-        if(keyword.length() > 0) {
-        	driver.findElement(By.partialLinkText(keyword)).click();
-        }
-        
+        driver.findElement(By.partialLinkText(keyword)).click();
+    
         String currentLink = driver.getCurrentUrl();
         driver.get(currentLink);
         		
-		WebElement AddToCart = driver.findElement(By.name("commit"));
-//		  WebElement AddToCart = driver.findElement(By.id("cart-controls-add"));
-//        WebElement AddToCart = driver.findElement(By.xpath("//input[@name='commit']"));
-//        List<WebElement> buttons = driver.findElements(By.className("button"));
-//        WebElement AddToCart = buttons.get(0);
+	WebElement AddToCart = driver.findElement(By.name("commit"));
         AddToCart.click();
         
+	//to do: fix it not going to checkout 100% of the time
         driver.get("https://www.supremenewyork.com/checkout");
         driver.get("https://www.supremenewyork.com/checkout");
-
         
         //ENTERING CHECKOUT INFO
         //name and address info
@@ -149,16 +139,20 @@ public class SupremeBotV1 {
         cvvInput.click();
         cvvInput.sendKeys(cvv);
         
-		Select creditMonthDropdown = new Select(driver.findElement(By.xpath("//*[@id=\"credit_card_month\"]")));
-		creditMonthDropdown.selectByVisibleText(creditMonth);
+	Select creditMonthDropdown = new Select(driver.findElement(By.xpath("//*[@id=\"credit_card_month\"]")));
+	creditMonthDropdown.selectByVisibleText(creditMonth); 
+
+	Select creditYearDropdown = new Select(driver.findElement(By.xpath("//*[@id=\"credit_card_year\"]")));
+	creditYearDropdown.selectByVisibleText(creditYear);
+
+	//clicks the check box
+	WebElement checkBox = driver.findElement(By.xpath("//*[@id=\"cart-cc\"]/fieldset/p[2]/label/div"));
+	checkBox.click();
+
+	//final checkout button
+	driver.findElement(By.name("commit")).click();
 		
-		Select creditYearDropdown = new Select(driver.findElement(By.xpath("//*[@id=\"credit_card_year\"]")));
-		creditYearDropdown.selectByVisibleText(creditYear);
-		
-		//clicks the check box
-		driver.findElement(By.xpath("//*[@id=\"order_terms\"]")).click();
-		
-		driver.quit();
+//	driver.quit();
        
     }
 
