@@ -1,8 +1,6 @@
-package bot;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import org.openqa.selenium.By;
@@ -15,7 +13,8 @@ public class SupremeBotV1 {
 
     public static void main(String[] args) {
 // declaration and instantiation of objects/variables
-	System.setProperty("webdriver.chrome.driver","C:\\\\selenium-3.14.0\\chromedriver.exe");
+    //String rootProjectPath = System.getProperty("user.dir");
+	System.setProperty("webdriver.chrome.driver", "D:\\\\Supreme-Bot\\drivers\\chromedriver.exe");
 	WebDriver driver = new ChromeDriver();
 
 	File data = new File("data.txt");
