@@ -14,7 +14,7 @@ public class SupremeBotV1 {
     public static void main(String[] args) {
 // declaration and instantiation of objects/variables
     //String rootProjectPath = System.getProperty("user.dir");
-	System.setProperty("webdriver.chrome.driver", "D:\\\\Supreme-Bot\\drivers\\chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver", "C:\\\\Users\\Bren\\Desktop\\chromedriver.exe");
 	WebDriver driver = new ChromeDriver();
 
 	File data = new File("data.txt");

@@ -1,3 +1,5 @@
+fake@gmail.com
+fakePass
 teeshirts
 Black
 Brendan Hood
@@ -9,6 +11,6 @@ bhood4064@fake.com
 Ellicott City
 MD
 8709556787654000
-8
+08
 2022
 900
