@@ -10,11 +10,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 public class SupremeBotV1 {
 
-
     public static void main(String[] args) {
 // declaration and instantiation of objects/variables
-    //String rootProjectPath = System.getProperty("user.dir");
-	System.setProperty("webdriver.chrome.driver", "C:\\\\Users\\Bren\\Desktop\\chromedriver.exe");
+    String rootProjectPath = System.getProperty("user.dir");
+	System.setProperty("webdriver.chrome.driver", rootProjectPath + "\\chromedriver.exe");
 	WebDriver driver = new ChromeDriver();
 
 	File data = new File("data.txt");
