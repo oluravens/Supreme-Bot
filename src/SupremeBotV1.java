@@ -88,7 +88,7 @@ public class SupremeBotV1 {
 		String baseUrl = "https://www.supremenewyork.com/shop/all";
 		driver.get(baseUrl);
 
-		if(dataList.equals("jackets")) {
+		if(category.equals("jackets")) {
 			driver.get(baseUrl + "/jackets");
 		}
 		else if(category.equals("shirts")) {
@@ -185,7 +185,7 @@ public class SupremeBotV1 {
 		WebDriver driver = new ChromeDriver();
 		
 		importDataFromFile();
-		loginToGoogle(driver);
+		//loginToGoogle(driver);
 		checkoutSupremeItem(driver);
 
 	}

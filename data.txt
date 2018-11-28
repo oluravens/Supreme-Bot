@@ -1,10 +1,8 @@
 fake@gmail.com
-fakePass
-teeshirts
-Black
-Brendan Hood
-bhood4064@fake.com
-410-123-4567
+password
+Benjamin James
+fake@gmail.com
+4101234567
 1600 Pennsylvania Ave
 1
 21042
@@ -14,3 +12,5 @@ MD
 08
 2022
 900
+hats
+Black
