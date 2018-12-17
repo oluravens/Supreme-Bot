@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -41,12 +42,12 @@ public class GUI {
 
 		private InputPane() {
 			
-			setBackground(Color.PINK);
+			setBackground(Color.lightGray);
 			setLayout(new GridBagLayout());
 			GridBagConstraints gbc = new GridBagConstraints();
 
 			gbc.gridx = 0;
-			gbc.gridy = 0;
+			gbc.gridy = 1;
 			gbc.anchor = GridBagConstraints.EAST;
 
 			//creating all input labels
@@ -114,10 +115,23 @@ public class GUI {
 			add(cvvLabel, gbc);
 			gbc.gridy++;
 			
-
-			//moves the grid over to the right one
-			gbc.gridx = 1;
+			//adds title in top middle
+			gbc.gridx = 0;
 			gbc.gridy = 0;
+			gbc.gridwidth = 2;
+			gbc.anchor = GridBagConstraints.CENTER;
+
+			JLabel title = new JLabel();
+			Font titleFont = new Font("Impact", Font.BOLD, 24);
+			title.setText("Supreme Drop Cop");
+			title.setFont(titleFont);
+			title.setForeground(Color.red.brighter());
+			add(title, gbc);
+			
+			//moves the grid over to the right one
+			gbc.gridx = 2;
+			gbc.gridy = 1;
+			gbc.gridwidth = 1;
 			gbc.anchor = GridBagConstraints.WEST;
 
 			//creating all text fields
@@ -185,7 +199,10 @@ public class GUI {
 			add(cvvTextField, gbc);
 			gbc.gridy++;
 		
+
 			JButton submitButton = new JButton("Submit");
+			submitButton.setBackground(Color.red.brighter());
+			submitButton.setForeground(Color.white);
 			
 			//sets fields equal to their text upon click
 			submitButton.addActionListener( new ActionListener()
@@ -231,6 +248,7 @@ public class GUI {
 			add(submitButton,gbc);
 
 		}
+		
 		
 		private void outputData(ArrayList<String> data){
 			
